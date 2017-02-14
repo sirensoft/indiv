@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\modules\promote\models;
 
 use yii\base\Model;
@@ -6,48 +7,50 @@ use yii2mod\query\ArrayQuery;
 use yii\data\ArrayDataProvider;
 
 class RptDspm extends Model {
-    
-    public $cup, $name,$hospcode ,$sp_first,$age_m;
-  
 
+    public $cup, $name, $hospcode, $sp_first, $age_m;
 
     public function rules() {
         return [
-            [['cup', 'name','hospcode','sp_first','age_m'], 'safe']
+            [['cup', 'name', 'hospcode', 'sp_first', 'age_m'], 'safe']
         ];
     }
+
     public function search($params = null) {
-        if(!empty($params['RptDspm']['cup'])){
-        $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
+        $start_d = '20161001';
+        $end_d = '20170930';
+        if (!empty($params['RptDspm']['cup'])) {
+            $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
 ,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
 ,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last
 from t_childdev_specialpp t
-INNER JOIN t_person_db p on t.hospcode = p.HOSPCODE AND t.pid = p.PID
+INNER JOIN t_person_cid p on t.cid = p.CID
 LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
+WHERE p.check_typearea in(1,3) AND p.NATION in(99) AND p.DISCHARGE in(9)
+AND t.date_start BETWEEN $start_d AND $end_d
 ORDER BY h.distcode,h.hoscode ";
-        }else{
-           $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
+        } else {
+            $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
 ,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
 ,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last
 from t_childdev_specialpp t
-INNER JOIN t_person_db p on t.hospcode = p.HOSPCODE AND t.pid = p.PID
+INNER JOIN t_person_cid p on t.cid = p.CID
 LEFT JOIN chospital_amp h on h.hoscode = t.hospcode 
-where t.birth ='' ORDER BY h.distcode,h.hoscode "; 
+where t.birth ='' ORDER BY h.distcode,h.hoscode ";
         }
-        
+
         $models = \Yii::$app->db->createCommand($sql)->queryAll();
-        
+
         $query = new ArrayQuery();
-        
+
         $query->from($models);
-        
+
         if ($this->load($params) && $this->validate()) {
-            $query->andFilterWhere(['cup'=>$this->cup]);
+            $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
-            $query->andFilterWhere(['hospcode'=> $this->hospcode]);
+            $query->andFilterWhere(['hospcode' => $this->hospcode]);
             $query->andFilterWhere(['like', 'sp_first', $this->sp_first]);
-            $query->andFilterWhere(['age_m'=>  $this->age_m]);
-           
+            $query->andFilterWhere(['age_m' => $this->age_m]);
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {
@@ -61,11 +64,13 @@ where t.birth ='' ORDER BY h.distcode,h.hoscode ";
                 'pageSize' => 25
             ]
         ]);
-    }//search
-    
+    }
+
+//search
+
     public function attributeLabels() {
         return [
-            
         ];
     }
+
 }

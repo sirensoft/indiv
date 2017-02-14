@@ -65,7 +65,13 @@ echo GridView::widget([
         'name:text:ชื่อ',
         'sex:text:เพศ',
         'birth:date:เกิด',
-        'age_m:integer:อายุ(ด)',
+        [
+            'attribute'=>'age_m',
+            'format'=>'integer',
+            'label'=>'อายุ(ด)',
+            'filter'=>['9'=>'9','18'=>'18','30'=>'30','42'=>'42']
+        ],
+        //'age_m:integer:อายุ(ด)',
         'date_serv_first:date:ครั้งแรก',
         'sp_first:text:รหัส',
         'date_serv_last:date:ครั้งสอง',
