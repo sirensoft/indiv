@@ -19,6 +19,7 @@ class RptDspm extends Model {
     public function search($params = null) {
         $start_d = '20161001';
         $end_d = '20170930';
+        $sql = " select  'null'";
         if (!empty($params['RptDspm']['cup'])) {
             $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
 ,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
@@ -29,15 +30,7 @@ LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
 WHERE p.check_typearea in(1,3) AND p.NATION in(99) AND p.DISCHARGE in(9)
 AND t.date_start BETWEEN $start_d AND $end_d
 ORDER BY h.distcode,h.hoscode ";
-        } else {
-            $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
-,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
-,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last
-from t_childdev_specialpp t
-INNER JOIN t_person_cid p on t.cid = p.CID
-LEFT JOIN chospital_amp h on h.hoscode = t.hospcode 
-where t.birth ='' ORDER BY h.distcode,h.hoscode ";
-        }
+        } 
 
         $models = \Yii::$app->db->createCommand($sql)->queryAll();
 
