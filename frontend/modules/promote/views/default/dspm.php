@@ -17,6 +17,7 @@ $this->title = 'ผลการดำเนินการการคัดก�
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+
 $sql = " SELECT DISTINCT t.amp_name id,t.amp_name val FROM chospital_amp t ";
 
 $items = MyHelper::dropDownItems($sql, 'id', 'val');
@@ -49,7 +50,7 @@ echo GridView::widget([
     'responsiveWrap' => false,
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-    'panel'=>['before'=>'ผลงานจากแฟ้ม special_pp'],
+    'panel'=>['before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>'],
     'columns' => [
         /* [
           'attribute' => 'cup',
