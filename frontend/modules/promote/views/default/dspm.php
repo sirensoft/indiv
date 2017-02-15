@@ -50,7 +50,10 @@ echo GridView::widget([
     'responsiveWrap' => false,
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-    'panel'=>['before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>'],
+    'panel'=>[
+        'before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'heading'=>'รายชื่อเด็กมีวันที่วันแรกที่อายุแตะ 9,18,30,42 เดือน ในปีงบประมาณ 2560'
+    ],
     'columns' => [
         /* [
           'attribute' => 'cup',

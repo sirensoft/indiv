@@ -50,7 +50,10 @@ echo GridView::widget([
     'responsiveWrap' => false,
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
-    'panel'=>['before'=>'<a href="https://goo.gl/o9EO3t" target="_blank">[ดูผลรวม-คลิก]</a>'],
+    'panel'=>[
+        'before'=>'<a href="https://goo.gl/o9EO3t" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'heading'=>'รายชื่อหญิงตั้งครรภ์ที่ได้รับการตรวจ HCT ปีงบประมาณ 2560 (Y=ค่า HCT อยู่ระหว่าง 1-32)'
+    ],
     'columns' => [
         /* [
           'attribute' => 'cup',
@@ -69,6 +72,6 @@ echo GridView::widget([
         'date_hct:date:ตรวจ',
         'hct_result:text:HCT',
         //'b',
-        'a:text:โลหิตจาง'
+        'a:text:A'
     ]
 ]);
