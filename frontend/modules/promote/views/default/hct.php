@@ -52,7 +52,7 @@ echo GridView::widget([
     'filterModel' => $searchModel,
     'panel'=>[
         'before'=>'<a href="https://goo.gl/o9EO3t" target="_blank">[ดูผลรวม-คลิก]</a>',
-        'heading'=>'รายชื่อหญิงตั้งครรภ์ที่ได้รับการตรวจ HCT ปีงบประมาณ 2560 (Y=ค่า HCT อยู่ระหว่าง 1-32)'
+        'heading'=>'รายชื่อหญิงตั้งครรภ์ที่ได้รับการตรวจ HCT ปีงบประมาณปัจจุบัน'
     ],
     'columns' => [
         /* [
