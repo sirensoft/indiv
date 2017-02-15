@@ -8,11 +8,11 @@ use yii\data\ArrayDataProvider;
 
 class RptHct extends Model {
 
-    public $cup, $name, $hospcode;
+    public $cup, $name, $hospcode,$a;
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode'], 'safe']
+            [['cup', 'name', 'hospcode','a'], 'safe']
         ];
     }
 
@@ -49,6 +49,7 @@ GROUP BY a.cid ";
             $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
+            $query->andFilterWhere(['a' => $this->a]);
             
         }
         $all_models = $query->all();

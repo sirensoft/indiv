@@ -8,12 +8,12 @@ use yii\data\ArrayDataProvider;
 
 class RptPap extends Model {
 
-    public $cup, $name, $hospcode;
+    public $cup, $name, $hospcode,$a;
     public $screen_code;
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode','screen_code'], 'safe']
+            [['cup', 'name', 'hospcode','screen_code','a'], 'safe']
         ];
     }
 
@@ -47,6 +47,7 @@ GROUP BY p.CID ";
             $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
+            $query->andFilterWhere(['a' => $this->a]);
             
             $query->andFilterWhere(['like', 'screen_code', $this->screen_code]);
             

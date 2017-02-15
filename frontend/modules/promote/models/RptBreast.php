@@ -8,12 +8,12 @@ use yii\data\ArrayDataProvider;
 
 class RptBreast extends Model {
 
-    public $cup, $name, $hospcode;
+    public $cup, $name, $hospcode,$a;
    
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode'], 'safe']
+            [['cup', 'name', 'hospcode','a'], 'safe']
         ];
     }
 
@@ -51,8 +51,7 @@ GROUP BY	p.cid ";
             $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
-
-            //$query->andFilterWhere(['like', 'screen_code', $this->screen_code]);
+            $query->andFilterWhere(['a' => $this->a]);
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {
