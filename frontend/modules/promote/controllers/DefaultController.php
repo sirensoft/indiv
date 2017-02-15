@@ -6,6 +6,7 @@ use yii\web\Controller;
 use frontend\modules\promote\models\RptDspm;
 use frontend\modules\promote\models\RptHct;
 use frontend\modules\promote\models\RptPap;
+use frontend\modules\promote\models\RptBreast;
 
 /**
  * Default controller for the `promote` module
@@ -49,13 +50,19 @@ class DefaultController extends Controller {
     }
     
     public function actionPap() {
-        $searchModel = new RptPap();
-       
+        $searchModel = new RptPap();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
-
-        
-
         return $this->render('pap', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+    public function actionBreast() {
+        $searchModel = new RptBreast();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('breast', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     

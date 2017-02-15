@@ -6,9 +6,10 @@ use yii\base\Model;
 use yii2mod\query\ArrayQuery;
 use yii\data\ArrayDataProvider;
 
-class RptHct extends Model {
+class RptBreast extends Model {
 
     public $cup, $name, $hospcode;
+   
 
     public function rules() {
         return [
@@ -19,24 +20,25 @@ class RptHct extends Model {
     public function search($params = null) {
 
         $sql = " select  'null'";
-        if (!empty($params['RptHct']['cup'])) {
+        if (!empty($params['RptBreast']['cup'])) {
 
-            $amp = $params['RptHct']['cup'];
+            $amp = $params['RptBreast']['cup'];
             $start_d = '20161001';
             $end_d = '20170930';
 
-            $sql = " SELECT h.amp_name cup,a.HOSPCODE hospcode,h.hosname,a.pid,pc.`NAME` name,pc.age_y age
-                ,p.DATE_HCT date_hct,p.HCT_RESULT hct_result
-,MAX(if(p.hct_result>0 ,'Y',NULL)) as b
-,MAX(if(p.hct_result BETWEEN 1 AND 32 ,'Y',NULL)) as a
+            $sql = " SELECT h.amp_name cup,
+p.check_hosp hospcode,h.hosname,p.PID pid,p.`NAME` 'name',p.age_y age
+,MAX(IF(o.doctor_screen_date BETWEEN $start_d AND $end_d ,o.doctor_screen_date,NULL)) 'screen_date'
+,o.doctor_screen 'doctor',o.self_screen 'self'
+,MAX(IF(o.doctor_screen_date BETWEEN $start_d AND $end_d OR o.self_screen_date BETWEEN $start_d AND $end_d ,'Y',NULL)) a
+
 FROM
-tmp_anc a 
-LEFT JOIN prenatal p ON a.HOSPCODE=p.HOSPCODE AND a.PID=p.PID AND a.gravida=p.gravida
-LEFT JOIN t_person_cid pc ON pc.CID = a.cid
-LEFT JOIN chospital_amp h ON h.hoscode = a.HOSPCODE
-WHERE a.nation in(99) AND a.date_serv BETWEEN $start_d AND $end_d AND h.amp_name = '$amp'
-AND  p.hct_result>0  
-GROUP BY a.cid ";
+t_person_cid p 
+LEFT JOIN t_breast_screen o ON o.CID=p.CID	
+LEFT JOIN chospital_amp h on p.HOSPCODE = h.hoscode
+WHERE	p.age_y BETWEEN 30 AND 70	AND p.sex IN(2) AND p.DISCHARGE IN(9) AND p.nation IN(99)
+AND p.check_typearea in(1,3)	AND h.amp_name = '$amp'
+GROUP BY	p.cid ";
         }
 
         $models = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -49,7 +51,8 @@ GROUP BY a.cid ";
             $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
-            
+
+            //$query->andFilterWhere(['like', 'screen_code', $this->screen_code]);
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {
