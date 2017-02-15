@@ -5,6 +5,7 @@ namespace frontend\modules\promote\controllers;
 use yii\web\Controller;
 use frontend\modules\promote\models\RptDspm;
 use frontend\modules\promote\models\RptHct;
+use frontend\modules\promote\models\RptPap;
 
 /**
  * Default controller for the `promote` module
@@ -41,6 +42,20 @@ class DefaultController extends Controller {
         
 
         return $this->render('hct', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+    public function actionPap() {
+        $searchModel = new RptPap();
+       
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        
+
+        return $this->render('pap', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
