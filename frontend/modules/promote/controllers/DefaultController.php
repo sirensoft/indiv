@@ -4,6 +4,7 @@ namespace frontend\modules\promote\controllers;
 
 use yii\web\Controller;
 use frontend\modules\promote\models\RptDspm;
+use frontend\modules\promote\models\RptHct;
 
 /**
  * Default controller for the `promote` module
@@ -26,6 +27,20 @@ class DefaultController extends Controller {
         
 
         return $this->render('dspm', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+    public function actionHct() {
+        $searchModel = new RptHct();
+       
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+
+        
+
+        return $this->render('hct', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
