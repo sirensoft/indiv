@@ -64,8 +64,8 @@ echo GridView::widget([
         'name:text:ชื่อ',        
         'age:integer:อายุ',
         'screen_date:date:ตรวจ',
-        'doctor:text:doctor',
-        'self:text:self',
+        'doctor:text:หมอ',
+        'self:text:ตนเอง',
        
         //'b',
         'a:text:A'
