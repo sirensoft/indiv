@@ -51,7 +51,7 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'panel'=>[
-        'before'=>'<a href="#" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'before'=>'<a href="https://goo.gl/uU7eKB" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อการคัดกรองมะเร็งเต้านมในสตรีอายุ 30-70 ปี'
     ],
     'columns' => [      
