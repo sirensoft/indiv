@@ -21,8 +21,13 @@ class RptPap extends Model {
 
         $sql = " select  'null'";
         if (!empty($params['RptPap']['cup'])) {
-
             $amp = $params['RptPap']['cup'];
+            
+            $mConfig = \frontend\models\SysConfig::find()->one();            
+            $byear = $mConfig->yearprocess;
+            $pyear = $byear-1;
+            $start_d = $pyear.'1001';
+            $end_d = $byear.'0930';
             
 
             $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname ,p.PID pid ,pc.`NAME` 'name',p.age_y age

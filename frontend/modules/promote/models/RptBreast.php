@@ -6,6 +6,8 @@ use yii\base\Model;
 use yii2mod\query\ArrayQuery;
 use yii\data\ArrayDataProvider;
 
+
+
 class RptBreast extends Model {
 
     public $cup, $name, $hospcode,$a;
@@ -18,13 +20,15 @@ class RptBreast extends Model {
     }
 
     public function search($params = null) {
-
         $sql = " select  'null'";
         if (!empty($params['RptBreast']['cup'])) {
-
             $amp = $params['RptBreast']['cup'];
-            $start_d = '20161001';
-            $end_d = '20170930';
+            
+            $mConfig = \frontend\models\SysConfig::find()->one();            
+            $byear = $mConfig->yearprocess;
+            $pyear = $byear-1;
+            $start_d = $pyear.'1001';
+            $end_d = $byear.'0930';
 
             $sql = " SELECT h.amp_name cup,
 p.check_hosp hospcode,h.hosname,p.PID pid,p.`NAME` 'name',p.age_y age

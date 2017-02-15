@@ -22,8 +22,12 @@ class RptDspm extends Model {
         if (!empty($params['RptDspm']['cup'])) {
 
             $amp = $params['RptDspm']['cup'];
-            $start_d = '20161001';
-            $end_d = '20170930';
+            
+            $mConfig = \frontend\models\SysConfig::find()->one();            
+            $byear = $mConfig->yearprocess;
+            $pyear = $byear-1;
+            $start_d = $pyear.'1001';
+            $end_d = $byear.'0930';
 
             $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
 ,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m

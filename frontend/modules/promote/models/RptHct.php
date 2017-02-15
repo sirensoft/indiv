@@ -8,11 +8,11 @@ use yii\data\ArrayDataProvider;
 
 class RptHct extends Model {
 
-    public $cup, $name, $hospcode,$a;
+    public $cup, $name, $hospcode, $a;
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode','a'], 'safe']
+            [['cup', 'name', 'hospcode', 'a'], 'safe']
         ];
     }
 
@@ -20,10 +20,13 @@ class RptHct extends Model {
 
         $sql = " select  'null'";
         if (!empty($params['RptHct']['cup'])) {
-
             $amp = $params['RptHct']['cup'];
-            $start_d = '20161001';
-            $end_d = '20170930';
+            
+            $mConfig = \frontend\models\SysConfig::find()->one();
+            $byear = $mConfig->yearprocess;
+            $pyear = $byear - 1;
+            $start_d = $pyear . '1001';
+            $end_d = $byear . '0930';
 
             $sql = " SELECT h.amp_name cup,a.HOSPCODE hospcode,h.hosname,a.pid,pc.`NAME` name,pc.age_y age
                 ,p.DATE_HCT date_hct,p.HCT_RESULT hct_result
@@ -50,7 +53,6 @@ GROUP BY a.cid ";
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
             $query->andFilterWhere(['a' => $this->a]);
-            
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {
