@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'การเฝ้าระวังอัตราการคลอดมีชีพในหญิงอายุ 15-19 ปี ';
+$this->title = 'ร้อยละการตั้งครรภ์ซ้ำในหญิงอายุน้อยกว่า 20 ปี (PA) ';
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -26,7 +26,7 @@ $items = MyHelper::dropDownItems($sql, 'id', 'val');
 
     <?php
     $form = ActiveForm::begin([
-                'action' => ['/promote/default/lborn1519'],
+                'action' => ['/promote/default/labor20'],
                 'method' => 'get',
     ]);
     ?>
@@ -51,7 +51,7 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'panel'=>[
-        'before'=>'<a href="https://goo.gl/67jgjG" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'before'=>'<a href="https://goo.gl/vY1YyU" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อ'
     ],
     'columns' => [      
@@ -63,8 +63,9 @@ echo GridView::widget([
         'pid',
         'name:text:ชื่อแม่',        
         'age:integer:อายุ',
-        'bmonth:text:คลอดเดือน:',
-        'lborn:integer:มีชีพ(คน)',
+        'g:integer:ครรภ์ที่',
+        'bmonth:text:คลอดเดือน',
+        
       
         'a:text:A'
     ]

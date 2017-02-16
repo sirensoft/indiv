@@ -51,7 +51,7 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'panel'=>[
-        'before'=>'<a href="https://goo.gl/67jgjG" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'before'=>'<a href="https://goo.gl/hcOJG8" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อ'
     ],
     'columns' => [      
@@ -63,7 +63,7 @@ echo GridView::widget([
         'pid',
         'name:text:ชื่อแม่',        
         'age:integer:อายุ',
-        'bmonth:text:เกิดเดือน:',
+        'bmonth:text:คลอดเดือน:',
         'lborn:integer:มีชีพ(คน)',
       
         'a:text:A'
