@@ -21,7 +21,7 @@ class RptPap extends Model {
 
         $sql = " select  'null'";
         if (!empty($params['RptPap']['cup'])) {
-            $amp = $params['RptPap']['cup'];
+            $cup = $params['RptPap']['cup'];
             
             $mConfig = \frontend\models\SysConfig::find()->one();            
             $byear = $mConfig->yearprocess;
@@ -38,7 +38,7 @@ LEFT JOIN t_person_cid pc ON pc.CID = p.CID
 LEFT JOIN chospital_amp h ON h.hoscode = p.HOSPCODE
 WHERE	
 p.age_y BETWEEN 30 AND 60	AND p.sex IN(2) AND p.DISCHARGE IN(9) 
-AND p.nation IN(99) AND p.check_typearea in(1,3) AND h.amp_name = '$amp'
+AND p.nation IN(99) AND p.check_typearea in(1,3) AND h.amp_name = '$cup'
 GROUP BY p.CID ";
         }
 

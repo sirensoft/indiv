@@ -6,38 +6,42 @@ use yii\base\Model;
 use yii2mod\query\ArrayQuery;
 use yii\data\ArrayDataProvider;
 
-class RptDspm extends Model {
+class RptLborn1519 extends Model {
 
-    public $cup, $name, $hospcode, $sp_first, $age_m;
+    public $cup, $name, $hospcode,$a;
+    public $bmonth;
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode', 'sp_first', 'age_m'], 'safe']
+            [['cup', 'name', 'hospcode','bmonth','a'], 'safe']
         ];
     }
 
     public function search($params = null) {
 
         $sql = " select  'null'";
-        if (!empty($params['RptDspm']['cup'])) {
-
-            $cup = $params['RptDspm']['cup'];
+        if (!empty($params['RptLborn1519']['cup'])) {
+            $cup = $params['RptLborn1519']['cup'];
             
             $mConfig = \frontend\models\SysConfig::find()->one();            
             $byear = $mConfig->yearprocess;
             $pyear = $byear-1;
             $start_d = $pyear.'1001';
             $end_d = $byear.'0930';
+            
 
-            $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
-,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
-,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last
-from t_childdev_specialpp t
-INNER JOIN t_person_cid p on t.cid = p.CID
-LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
-WHERE p.check_typearea in(1,3) AND p.NATION in(99) AND p.DISCHARGE in(9)
-AND t.date_start BETWEEN $start_d AND $end_d  AND h.amp_name = '$cup'
-ORDER BY h.distcode,h.hoscode ";
+            $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname,p.PID pid,p.`NAME` 'name'	
+                ,p.age_y age,l.m bmonth ,l.LBORN lborn ,if(l.LBORN>=1,'Y',NULL) a FROM
+t_person_cid p 
+LEFT JOIN (
+SELECT cid,bdate,DATE_FORMAT(BDATE,'%m') m,sum(LBORN) LBORN
+FROM t_labor
+WHERE TIMESTAMPDIFF(YEAR,birth,BDATE) BETWEEN 15 and 19 AND BDATE BETWEEN $start_d AND $end_d	AND LBORN >=1
+GROUP BY cid
+) l ON l.cid=p.CID
+LEFT JOIN chospital_amp h ON h.hoscode = p.HOSPCODE
+WHERE	p.age_y BETWEEN 15 AND 19 AND p.sex IN(2)
+AND p.check_typearea in(1,3) AND p.DISCHARGE in(9) and h.amp_name ='$cup' ";
         }
 
         $models = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -50,8 +54,10 @@ ORDER BY h.distcode,h.hoscode ";
             $query->andFilterWhere(['cup' => $this->cup]);
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
-            $query->andFilterWhere(['like', 'sp_first', $this->sp_first]);
-            $query->andFilterWhere(['age_m' => $this->age_m]);
+            $query->andFilterWhere(['a' => $this->a]);
+            
+            $query->andFilterWhere(['bmonth'=>$this->bmonth]);
+            
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {

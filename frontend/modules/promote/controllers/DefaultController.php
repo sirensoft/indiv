@@ -7,6 +7,7 @@ use frontend\modules\promote\models\RptDspm;
 use frontend\modules\promote\models\RptHct;
 use frontend\modules\promote\models\RptPap;
 use frontend\modules\promote\models\RptBreast;
+use frontend\modules\promote\models\RptLborn1519;
 
 /**
  * Default controller for the `promote` module
@@ -63,6 +64,15 @@ class DefaultController extends Controller {
         $searchModel = new RptBreast();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('breast', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    public function actionLborn1519() {
+        $searchModel = new RptLborn1519();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('lborn1519', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     

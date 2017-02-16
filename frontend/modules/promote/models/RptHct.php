@@ -20,7 +20,7 @@ class RptHct extends Model {
 
         $sql = " select  'null'";
         if (!empty($params['RptHct']['cup'])) {
-            $amp = $params['RptHct']['cup'];
+            $cup = $params['RptHct']['cup'];
             
             $mConfig = \frontend\models\SysConfig::find()->one();
             $byear = $mConfig->yearprocess;
@@ -37,7 +37,7 @@ tmp_anc a
 LEFT JOIN prenatal p ON a.HOSPCODE=p.HOSPCODE AND a.PID=p.PID AND a.gravida=p.gravida
 LEFT JOIN t_person_cid pc ON pc.CID = a.cid
 LEFT JOIN chospital_amp h ON h.hoscode = a.HOSPCODE
-WHERE a.nation in(99) AND a.date_serv BETWEEN $start_d AND $end_d AND h.amp_name = '$amp'
+WHERE a.nation in(99) AND a.date_serv BETWEEN $start_d AND $end_d AND h.amp_name = '$cup'
 AND  p.hct_result>0  
 GROUP BY a.cid ";
         }

@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'ผลการดำเนินการการคัดกรองพัฒนาการเด็กตามกลุ่มอายุ special pp';
+$this->title = 'การเฝ้าระวังอัตราการคลอดมีชีพในหญิงอายุ 15-19 ปี ';
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -26,7 +26,7 @@ $items = MyHelper::dropDownItems($sql, 'id', 'val');
 
     <?php
     $form = ActiveForm::begin([
-                'action' => ['/promote/default/dspm'],
+                'action' => ['/promote/default/lborn1519'],
                 'method' => 'get',
     ]);
     ?>
@@ -51,34 +51,21 @@ echo GridView::widget([
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
     'panel'=>[
-        'before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>',
-        'heading'=>'รายชื่อเด็กมีวันที่วันแรกที่อายุแตะ 9,18,30,42 เดือน ในปีงบประมาณปัจจุบัน'
+        'before'=>'<a href="https://goo.gl/67jgjG" target="_blank">[ดูผลรวม-คลิก]</a>',
+        'heading'=>'รายชื่อ'
     ],
-    'columns' => [
-        /* [
-          'attribute' => 'cup',
-          'label' => 'CUP',
-          //'filter' => MyHelper::dropDownItems($sql, 'id', 'val')
-          ], */
+    'columns' => [      
         [
             'attribute' =>'hospcode',
             'filter' => MyHelper::dropDownItems($sql_hos, 'id', 'val')
         ],
         'hosname',
         'pid',
-        'name:text:ชื่อ',
-        'sex:text:เพศ',
-        'birth:date:เกิด',
-        [
-            'attribute'=>'age_m',
-            'format'=>'integer',
-            'label'=>'กลุ่ม(ด)',
-            'filter'=>['9'=>'9ด','18'=>'18ด','30'=>'30ด','42'=>'42ด']
-        ],
-        //'age_m:integer:อายุ(ด)',
-        'date_serv_first:date:ครั้งแรก',
-        'sp_first:text:รหัส',
-        'date_serv_last:date:ครั้งสอง',
-        'sp_last:text:รหัส'
+        'name:text:ชื่อแม่',        
+        'age:integer:อายุ',
+        'bmonth:text:เกิดเดือน:',
+        'lborn:integer:มีชีพ(คน)',
+      
+        'a:text:A'
     ]
 ]);

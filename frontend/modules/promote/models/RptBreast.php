@@ -22,7 +22,7 @@ class RptBreast extends Model {
     public function search($params = null) {
         $sql = " select  'null'";
         if (!empty($params['RptBreast']['cup'])) {
-            $amp = $params['RptBreast']['cup'];
+            $cup = $params['RptBreast']['cup'];
             
             $mConfig = \frontend\models\SysConfig::find()->one();            
             $byear = $mConfig->yearprocess;
@@ -41,7 +41,7 @@ t_person_cid p
 LEFT JOIN t_breast_screen o ON o.CID=p.CID	
 LEFT JOIN chospital_amp h on p.HOSPCODE = h.hoscode
 WHERE	p.age_y BETWEEN 30 AND 70	AND p.sex IN(2) AND p.DISCHARGE IN(9) AND p.nation IN(99)
-AND p.check_typearea in(1,3)	AND h.amp_name = '$amp'
+AND p.check_typearea in(1,3)	AND h.amp_name = '$cup'
 GROUP BY	p.cid ";
         }
 
