@@ -54,6 +54,16 @@ echo GridView::widget([
         'before'=>'<a href="https://goo.gl/uU7eKB" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อการคัดกรองมะเร็งเต้านมในสตรีอายุ 30-70 ปี'
     ],
+    'beforeHeader'=>[
+        [
+            'columns'=>[
+                ['content'=>'', 'options'=>['colspan'=>6, 'class'=>'text-center warning']], 
+                ['content'=>'ตรวจโดย', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
+                ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
+            ],
+            //'options'=>['class'=>'skip-export'] // remove this row from export
+        ]
+    ],
     'columns' => [      
         [
             'attribute' =>'hospcode',
@@ -64,7 +74,7 @@ echo GridView::widget([
         'name:text:ชื่อ',        
         'age:integer:อายุ',
         'screen_date:date:ตรวจ',
-        'doctor:text:หมอ',
+        'doctor:text:เจ้าหน้าที่',
         'self:text:ตนเอง',
        
         //'b',

@@ -54,6 +54,18 @@ echo GridView::widget([
         'before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อเด็กมีวันที่วันแรกที่อายุแตะ 9,18,30,42 เดือน ในปีงบประมาณปัจจุบัน'
     ],
+    'beforeHeader'=>[
+        [
+            'columns'=>[
+                ['content'=>'หน่วยบริการ', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
+                ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>5, 'class'=>'text-center warning']],
+                
+                ['content'=>'คัดกรองครั้งที่1', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
+                ['content'=>'คัดกรองครั้งที่2', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
+            ],
+            //'options'=>['class'=>'skip-export'] // remove this row from export
+        ]
+    ],
     'columns' => [
         /* [
           'attribute' => 'cup',
@@ -76,9 +88,9 @@ echo GridView::widget([
             'filter'=>['9'=>'9ด','18'=>'18ด','30'=>'30ด','42'=>'42ด']
         ],
         //'age_m:integer:อายุ(ด)',
-        'date_serv_first:date:ครั้งแรก',
+        'date_serv_first:date:วันที่',
         'sp_first:text:รหัส',
-        'date_serv_last:date:ครั้งสอง',
+        'date_serv_last:date:วันที่',
         'sp_last:text:รหัส'
     ]
 ]);
