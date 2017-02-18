@@ -54,6 +54,7 @@ ORDER BY h.distcode,h.hoscode ";
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
             $query->andFilterWhere(['like', 'sp_first', $this->sp_first]);
             $query->andFilterWhere(['age_m' => $this->age_m]);
+            $query->andFilterWhere(['color' => $this->color]);
         }
         $all_models = $query->all();
         if (!empty($all_models[0])) {

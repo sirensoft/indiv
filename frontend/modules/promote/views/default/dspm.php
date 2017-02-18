@@ -61,7 +61,8 @@ echo GridView::widget([
                 ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>6, 'class'=>'text-center warning']],
                 
                 ['content'=>'คัดกรองครั้งที่1', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
-                ['content'=>'คัดกรองครั้งที่2', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
+                ['content'=>'คัดกรองครั้งที่2', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'', 'options'=>['colspan'=>1, 'class'=>'text-center warning']], 
             ],
             //'options'=>['class'=>'skip-export'] // remove this row from export
         ]
@@ -105,7 +106,11 @@ echo GridView::widget([
         'date_serv_first:date:วันที่',
         'sp_first:text:รหัส',
         'date_serv_last:date:วันที่',
-        'sp_last:text:รหัส'
+        'sp_last:text:รหัส',
+        [
+            'attribute'=>'color',
+            'filter'=>['red'=>'แดง']
+        ]
     ],
     'rowOptions' => function ($model, $index, $widget, $grid){
         if(empty($model['color'])){
