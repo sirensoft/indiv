@@ -31,12 +31,12 @@ $items = MyHelper::dropDownItems($sql, 'id', 'val');
     ]);
     ?>
 
-    <div class="input-group">
+    <div class="input-group" >
         
         <?= $form->field($searchModel, 'cup')->dropDownList($items, ['prompt' => '-- เลือก cup --'])->label(FALSE); ?>
         <span class="input-group-btn">
             <button class="btn btn-default alignment" type="submit">
-                <i class="glyphicon glyphicon-search"></i> ค้นหา
+                <i class="glyphicon glyphicon-search"></i> ตกลง
             </button>
         </span>
     </div>
@@ -48,8 +48,13 @@ $items = MyHelper::dropDownItems($sql, 'id', 'val');
 $sql_hos = " select h.hoscode id,h.hoscode val from chospital_amp h where h.amp_name = '$searchModel->cup' ";
 echo GridView::widget([
     'responsiveWrap' => false,
+    'responsive' => FALSE,
+    'containerOptions' => ['style'=>'overflow: auto'],
+    'floatHeader' => true,
+    
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
+    
     'panel'=>[
         'before'=>'<a href="https://goo.gl/5lxxuK" target="_blank">[ดูผลรวม-คลิก]</a>',
         'heading'=>'รายชื่อเด็กมีวันที่วันแรกที่อายุแตะ 9,18,30,42 เดือน ในปีงบประมาณปัจจุบัน'
