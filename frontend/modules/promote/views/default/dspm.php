@@ -58,7 +58,7 @@ echo GridView::widget([
         [
             'columns'=>[
                 ['content'=>'หน่วยบริการ', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
-                ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>5, 'class'=>'text-center warning']],
+                ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>6, 'class'=>'text-center warning']],
                 
                 ['content'=>'คัดกรองครั้งที่1', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
                 ['content'=>'คัดกรองครั้งที่2', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
@@ -78,9 +78,23 @@ echo GridView::widget([
         ],
         'hosname',
         'pid',
-        'name:text:ชื่อ',
+        [
+            'attribute'=>'name',
+            'width'=>'80px',
+            'noWrap'=>true
+        ],
+       
         'sex:text:เพศ',
         'birth:date:เกิด',
+        [
+            'attribute'=>'c_age',
+            'label'=>'อายุปัจจุบัน(ด)',
+            'mergeHeader'=>true,
+            'vAlign'=>'middle',
+            
+        ],
+       
+        
         [
             'attribute'=>'age_m',
             'format'=>'integer',
@@ -92,5 +106,16 @@ echo GridView::widget([
         'sp_first:text:รหัส',
         'date_serv_last:date:วันที่',
         'sp_last:text:รหัส'
-    ]
+    ],
+    'rowOptions' => function ($model, $index, $widget, $grid){
+        if(empty($model['color'])){
+            return [];
+        }
+      if($model['color'] == 'red'){
+       return ['style'=>'color:white;background-color:#fd3434'];
+      }else{
+        return [];
+      }
+    },
+     'hover'=>true
 ]);

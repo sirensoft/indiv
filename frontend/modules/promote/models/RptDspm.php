@@ -8,11 +8,11 @@ use yii\data\ArrayDataProvider;
 
 class RptDspm extends Model {
 
-    public $cup, $name, $hospcode, $sp_first, $age_m;
+    public $cup, $name, $hospcode, $sp_first, $age_m,$color;
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode', 'sp_first', 'age_m'], 'safe']
+            [['cup', 'name', 'hospcode', 'sp_first', 'age_m','color'], 'safe']
         ];
     }
 
@@ -30,8 +30,10 @@ class RptDspm extends Model {
             $end_d = $byear.'0930';
 
             $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
-,t.pid ,p.`NAME` 'name',t.sex ,t.birth ,t.agemonth age_m
-,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last
+,t.pid ,p.`NAME` 'name',t.sex ,t.birth 
+,TIMESTAMPDIFF(MONTH,t.birth,CURDATE()) c_age ,t.date_start,t.date_end
+,t.agemonth age_m ,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last,
+if(TIMESTAMPDIFF(MONTH,t.birth,CURDATE())>t.agemonth AND t.date_serv_first IS NULL,'red',NULL) 'color'
 from t_childdev_specialpp t
 INNER JOIN t_person_cid p on t.cid = p.CID
 LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
