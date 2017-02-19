@@ -103,7 +103,8 @@ class DefaultController extends Controller {
     }
     
     public function actionAging() {
-        $searchModel = new RptAging();      
+        $searchModel = new RptAging();
+        
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('aging', [
                     'searchModel' => $searchModel,
