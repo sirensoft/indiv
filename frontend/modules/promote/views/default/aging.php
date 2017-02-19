@@ -87,51 +87,47 @@ echo GridView::widget([
         'age:integer:อายุ',
         'moo:text:หมู่ที่',
         
-        'adl_date:date:คัด',
+        'adl_date:date:วันที่',
         [
             'attribute'=>'adl_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['adl_code'])){
+                if(!isset($model['adl_code'])){
                     return NULL;
                 }
                 $code = $model['adl_code'];
-                $val =['1B1280'=>'ติดสังคม','1B1281'=>'ติดบ้าน','1B1282'=>'ติดเตียง'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                $val =['1B1280'=>'ติดสังคม','1B1281'=>'ติดบ้าน','1B1282'=>'ติดเตียง'];                
+                return $val[$code];
+                
             }
         ],
                 
-        'dm_date:date:คัด',
+        'dm_date:date:วันที่',
         [
             'attribute'=>'dm_risk',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['dm_risk'])){
+                if(!isset($model['dm_risk'])){
                     return NULL;
                 }
                 $code = $model['dm_risk'];
-                $val =['0'=>'ปกติ','1'=>'เสี่ยง','2'=>'เสี่ยงสูง'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                $val =['0'=>'ปกติ','1'=>'เสี่ยง','2'=>'เสี่ยงสูง'];                
+                return $val[$code];
+                
             }
         ],
                 
-        'ht_date:date:คัด',
+        'ht_date:date:วันที่',
         [
             'attribute'=>'ht_risk',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['ht_risk'])){
+                if(!isset($model['ht_risk'])){
                     return NULL;
                 }
                 $code = $model['ht_risk'];
                 $val =['0'=>'ปกติ','1'=>'เสี่ยง','2'=>'เสี่ยงสูง'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
             }
         ],
         
@@ -140,94 +136,88 @@ echo GridView::widget([
             'attribute'=>'cvd_res',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['cvd_res'])){
+                if(!isset($model['cvd_res'])){
                     return NULL;
                 }
                 $code = $model['cvd_res'];
-                $val =['1'=>'ต่ำ','2'=>'ปานกลาง','3'=>'สูง','4'=>'สูงมาก','5'=>'สูงอันตราย'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                $val =['1'=>'ต่ำ','2'=>'ปานกลาง','3'=>'สูง','4'=>'สูงมาก','5'=>'สูงอันตราย'];                
+                return $val[$code];
+                
             }
         ],
                 
-        'dent_date:date:คัด',
+        'dent_date:date:วันที่',
         [
             'attribute'=>'dent_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['dent_code'])){
+                if(!isset($model['dent_code'])){
                     return NULL;
                 }
                 $code = $model['dent_code'];
                 $val =['1B1260'=>'ปกติ','1B1261'=>'ผิดปกติ','1B1269'=>'ไม่ระบุ'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
+                
             }
         ],
         
-        'amt_date:date:คัด',
+        'amt_date:date:วันที่',
         [
             'attribute'=>'amt_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['amt_code'])){
+                if(!isset($model['amt_code'])){
                     return NULL;
                 }
                 $code = $model['amt_code'];
                 $val =['1B1220'=>'ปกติ','1B1221'=>'ผิดปกติ','1B1223'=>'ผิดปกติ','1B1229'=>'ไม่ระบุ'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
+                
             }
         ],
                 
-        '2q_date:date:คัด',
+        '2q_date:date:วันที่',
         [
             'attribute'=>'2q_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['2q_code'])){
+                if(!isset($model['2q_code'])){
                     return NULL;
                 }
                 $code = $model['2q_code'];
                 $val =['1B0280'=>'ปกติ','1B0281'=>'ผิดปกติ'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
+                
             }
         ],
                 
-        'knee_date:date:คัด',
+        'knee_date:date:วันที่',
         [
             'attribute'=>'knee_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['knee_code'])){
+                if(!isset($model['knee_code'])){
                     return NULL;
                 }
                 $code = $model['knee_code'];
                 $val =['1B1270'=>'ปกติ','1B1271'=>'ผิดปกติ','1B1272'=>'ผิดปกติ','1B1279'=>'ไม่ระบุ'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
+                
             }
         ],
                 
-         'fall_date:date:คัด',
+         'fall_date:date:วันที่',
         [
             'attribute'=>'fall_code',
             'label'=>'ผล',
             'value'=>function($model){
-                if(empty($model['fall_code'])){
+                if(!isset($model['fall_code'])){
                     return NULL;
                 }
                 $code = $model['fall_code'];
                 $val =['1B1200'=>'ปกติ','1B1201'=>'ผิดปกติ','1B1202'=>'ผิดปกติ','1B1209'=>'ไม่ระบุ'];
-                if(!empty($val[$code])){
-                    return $val[$code];
-                }
+                return $val[$code];
+                
             }
         ],
         
