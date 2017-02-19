@@ -64,6 +64,9 @@ echo GridView::widget([
                 ['content'=>'ความดัน', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
                 ['content'=>'CVD', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
                 ['content'=>'ช่องปาก', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'สมองเสื่อม', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'2Q', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'เข่าเสื่อม', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
                
                  
             ],
@@ -141,6 +144,45 @@ echo GridView::widget([
             'value'=>function($model){
                 $code = $model['dent_code'];
                 $val =['1B1260'=>'ปกติ','1B1261'=>'ผิดปกติ','1B1269'=>'ไม่ระบุ'];
+                if(!empty($val[$code])){
+                    return $val[$code];
+                }
+            }
+        ],
+        
+        'amt_date:date:คัด',
+        [
+            'attribute'=>'amt_code',
+            'label'=>'ผล',
+            'value'=>function($model){
+                $code = $model['amt_code'];
+                $val =['1B1220'=>'ปกติ','1B1221'=>'ผิดปกติ','1B1223'=>'ผิดปกติ','1B1229'=>'ไม่ระบุ'];
+                if(!empty($val[$code])){
+                    return $val[$code];
+                }
+            }
+        ],
+                
+        '2q_date:date:คัด',
+        [
+            'attribute'=>'2q_code',
+            'label'=>'ผล',
+            'value'=>function($model){
+                $code = $model['2q_code'];
+                $val =['1B0280'=>'ปกติ','1B0281'=>'ผิดปกติ'];
+                if(!empty($val[$code])){
+                    return $val[$code];
+                }
+            }
+        ],
+                
+        'knee_date:date:คัด',
+        [
+            'attribute'=>'knee_code',
+            'label'=>'ผล',
+            'value'=>function($model){
+                $code = $model['knee_code'];
+                $val =['1B1270'=>'ปกติ','1B1271'=>'ผิดปกติ','1B1272'=>'ผิดปกติ','1B1279'=>'ไม่ระบุ'];
                 if(!empty($val[$code])){
                     return $val[$code];
                 }

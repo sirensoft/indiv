@@ -13,7 +13,7 @@ class RptAging extends Model {
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode'], 'safe']
+            [['cup', 'name', 'hospcode','moo'], 'safe']
         ];
     }
 
