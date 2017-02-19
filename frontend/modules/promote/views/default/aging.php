@@ -67,6 +67,8 @@ echo GridView::widget([
                 ['content'=>'สมองเสื่อม', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
                 ['content'=>'2Q', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
                 ['content'=>'เข่าเสื่อม', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'หกล้ม', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
+                ['content'=>'BMI', 'options'=>['colspan'=>1, 'class'=>'text-center warning']],
                
                  
             ],
@@ -188,6 +190,21 @@ echo GridView::widget([
                 }
             }
         ],
+                
+         'fall_date:date:คัด',
+        [
+            'attribute'=>'fall_code',
+            'label'=>'ผล',
+            'value'=>function($model){
+                $code = $model['fall_code'];
+                $val =['1B1200'=>'ปกติ','1B1201'=>'ผิดปกติ','1B1202'=>'ผิดปกติ','1B1209'=>'ไม่ระบุ'];
+                if(!empty($val[$code])){
+                    return $val[$code];
+                }
+            }
+        ],
+        
+        'bmi:text:BMI'
         
        
     ]
