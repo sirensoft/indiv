@@ -36,7 +36,7 @@ $items = MyHelper::dropDownItems($sql, 'id', 'val');
         <?= $form->field($searchModel, 'cup')->dropDownList($items, ['prompt' => '-- เลือก cup --'])->label(FALSE); ?>
         <span class="input-group-btn">
             <button class="btn btn-default alignment" type="submit">
-                <i class="glyphicon glyphicon-search"></i> ค้นหา
+                <i class="glyphicon glyphicon-search"></i> ตกลง
             </button>
         </span>
     </div>
