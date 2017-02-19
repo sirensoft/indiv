@@ -10,6 +10,7 @@ use frontend\modules\promote\models\RptBreast;
 use frontend\modules\promote\models\RptLborn1519;
 use frontend\modules\promote\models\RptLborn1014;
 use frontend\modules\promote\models\RptLabor20;
+use frontend\modules\promote\models\RptAging;
 
 /**
  * Default controller for the `promote` module
@@ -95,6 +96,16 @@ class DefaultController extends Controller {
         $searchModel = new RptLabor20();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('labor20', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+    public function actionAging() {
+        $searchModel = new RptAging();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('aging', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
