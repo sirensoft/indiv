@@ -50,7 +50,7 @@ echo GridView::widget([
     'responsiveWrap' => false,
     'responsive' => FALSE,
     'containerOptions' => ['style'=>'overflow: auto'],
-    'floatHeader' => true,
+    //'floatHeader' => true,
     
     'dataProvider' => $dataProvider,
     'filterModel' => $searchModel,
@@ -118,14 +118,16 @@ echo GridView::widget([
         ]
     ],
     'rowOptions' => function ($model, $index, $widget, $grid){
-        if(empty($model['color'])){
+      if(empty($model['color'])){
             return [];
-        }
+      }
+      if($model['color'] == 'red' and $model['c_age']==$model['age_m']){
+       return ['style'=>'color:white;background-color:#ff6c6c'];
+      }
       if($model['color'] == 'red'){
        return ['style'=>'color:white;background-color:#fd3434'];
-      }else{
-        return [];
       }
+      return [];
     },
      'hover'=>true
 ]);
