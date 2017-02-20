@@ -114,17 +114,17 @@ echo GridView::widget([
         'sp_last:text:รหัส',
         [
             'attribute'=>'color',
-            'filter'=>['red'=>'แดง']
+            'filter'=>['yes'=>'yes']
         ]
     ],
     'rowOptions' => function ($model, $index, $widget, $grid){
       if(empty($model['color'])){
             return [];
       }
-      if($model['color'] == 'red' and $model['c_age']==$model['age_m']){
-       return ['style'=>'color:white;background-color:#ff6c6c'];
+      if($model['color'] == 'yes' and $model['c_age']==$model['age_m']){
+       return ['style'=>'background-color:yellow'];
       }
-      if($model['color'] == 'red'){
+      if($model['color'] == 'yes'){
        return ['style'=>'color:white;background-color:#fd3434'];
       }
       return [];

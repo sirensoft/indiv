@@ -33,7 +33,7 @@ class RptDspm extends Model {
 ,t.pid ,p.`NAME` 'name',t.sex ,t.birth 
 ,TIMESTAMPDIFF(MONTH,t.birth,CURDATE()) c_age ,t.date_start,t.date_end
 ,t.agemonth age_m ,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last,
-if(TIMESTAMPDIFF(MONTH,t.birth,CURDATE())>=t.agemonth AND t.date_serv_first IS NULL,'red',NULL) 'color'
+if(TIMESTAMPDIFF(MONTH,t.birth,CURDATE())>=t.agemonth AND t.date_serv_first IS NULL,'yes',NULL) 'color'
 from t_childdev_specialpp t
 INNER JOIN t_person_cid p on t.cid = p.CID
 LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
