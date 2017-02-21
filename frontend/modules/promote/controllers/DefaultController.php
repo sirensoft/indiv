@@ -12,6 +12,7 @@ use frontend\modules\promote\models\RptLborn1014;
 use frontend\modules\promote\models\RptLabor20;
 use frontend\modules\promote\models\RptAging;
 use frontend\modules\promote\models\RptBmi;
+use frontend\modules\promote\models\RptFat;
 
 /**
  * Default controller for the `promote` module
@@ -118,6 +119,16 @@ class DefaultController extends Controller {
         $searchModel = new RptBmi();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('bmi', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+     public function actionFat() {
+        $searchModel = new RptFat();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('fat', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
