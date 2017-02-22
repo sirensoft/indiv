@@ -114,6 +114,7 @@ echo GridView::widget([
         'sp_last:text:รหัส',
         [
             'attribute'=>'color',
+            'label'=>'lose',
             'filter'=>['yes'=>'yes']
         ]
     ],
