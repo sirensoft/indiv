@@ -3,6 +3,7 @@
 namespace frontend\modules\promote\controllers;
 
 use yii\web\Controller;
+use frontend\models\SysConfig;
 use frontend\modules\promote\models\RptDspm;
 use frontend\modules\promote\models\RptHct;
 use frontend\modules\promote\models\RptPap;
@@ -24,6 +25,15 @@ class DefaultController extends Controller {
      * Renders the index view for the module
      * @return string
      */
+    public function beforeAction($action)
+    {
+        $mSysConfig = SysConfig::find()->one();
+        if($action->id !== 'index' and $mSysConfig->process==1){
+            throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-08.00น.) กรุณากลับเข้ามาใหม่หลังประมาลผลเสร็จแล้ว');
+        }
+        return parent::beforeAction($action);
+    }
+    
     public function actionIndex() {
         return $this->render('index');
     }

@@ -49,6 +49,8 @@ class SiteController extends Controller
             ],
         ];
     }
+    
+    
 
     /**
      * @inheritdoc
@@ -73,10 +75,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $mSysConfig = SysConfig::find()->one();
-        if($mSysConfig->process==1){
-            throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล...');
-        }
+        
         return $this->render('index');
     }
 
