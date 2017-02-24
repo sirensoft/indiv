@@ -13,6 +13,7 @@ use frontend\modules\promote\models\RptLabor20;
 use frontend\modules\promote\models\RptAging;
 use frontend\modules\promote\models\RptBmi;
 use frontend\modules\promote\models\RptFat;
+use frontend\modules\promote\models\RptIodine;
 
 /**
  * Default controller for the `promote` module
@@ -129,6 +130,16 @@ class DefaultController extends Controller {
         $searchModel = new RptFat();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('fat', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+    public function actionIodine() {
+        $searchModel = new RptIodine();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('iodine', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
