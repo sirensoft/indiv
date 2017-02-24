@@ -29,7 +29,7 @@ class DefaultController extends Controller {
     {
         $mSysConfig = SysConfig::find()->one();
         if($action->id !== 'index' and $mSysConfig->process==1){
-            throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-08.00น.) กรุณากลับเข้ามาใหม่หลังประมาลผลเสร็จแล้ว');
+            throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-08.00น.) กรุณากลับเข้ามาใหม่หลังประมวลผลเสร็จแล้ว');
         }
         return parent::beforeAction($action);
     }
