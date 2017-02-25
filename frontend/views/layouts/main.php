@@ -61,22 +61,23 @@ AppAsset::register($this);
             NavBar::end();
             ?>
 
-            <div class="container">
-            <?=
-            Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ])
-            ?>
+            <div style="margin-top: 65px;margin-left: 10px;margin-right: 10px">
+<!--            <div class="container">-->
+                <?=
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ])
+                ?>
                 <?= Alert::widget() ?>
                 <?= $content ?>
             </div>
         </div>
-      
-          
-        
+
+
+
         <footer class="footer">
             <div class="container">
-                
+
                 <p class="pull-left" id="histats_counter"></p>
 
                 <p class="pull-right">&copy; นายอุเทน จาดยางโทน</p>
@@ -88,15 +89,15 @@ AppAsset::register($this);
 </html>
 <?php $this->endPage() ?>
 <script type="text/javascript">
-     var _Hasync = _Hasync || [];
-                _Hasync.push(['Histats.start', '1,3735892,4,2004,112,35,00011001']);
-                _Hasync.push(['Histats.fasi', '1']);
-                _Hasync.push(['Histats.track_hits', '']);
-                (function () {
-                    var hs = document.createElement('script');
-                    hs.type = 'text/javascript';
-                    hs.async = true;
-                    hs.src = ('//s10.histats.com/js15_as.js');
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-                })();    
+    var _Hasync = _Hasync || [];
+    _Hasync.push(['Histats.start', '1,3735892,4,2004,112,35,00011001']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function () {
+        var hs = document.createElement('script');
+        hs.type = 'text/javascript';
+        hs.async = true;
+        hs.src = ('//s10.histats.com/js15_as.js');
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();
 </script>
