@@ -15,6 +15,7 @@ use frontend\modules\promote\models\RptAging;
 use frontend\modules\promote\models\RptBmi;
 use frontend\modules\promote\models\RptFat;
 use frontend\modules\promote\models\RptIodine;
+use frontend\modules\promote\models\RptAnc12;
 
 /**
  * Default controller for the `promote` module
@@ -150,6 +151,17 @@ class DefaultController extends Controller {
         $searchModel = new RptIodine();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('iodine', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+     public function actionAnc12() {
+         
+        $searchModel = new RptAnc12();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('anc12', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
