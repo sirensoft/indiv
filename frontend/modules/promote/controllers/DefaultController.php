@@ -16,6 +16,7 @@ use frontend\modules\promote\models\RptBmi;
 use frontend\modules\promote\models\RptFat;
 use frontend\modules\promote\models\RptIodine;
 use frontend\modules\promote\models\RptAnc12;
+use frontend\modules\promote\models\Rpt2500;
 
 /**
  * Default controller for the `promote` module
@@ -30,7 +31,7 @@ class DefaultController extends Controller {
     {
         $mSysConfig = SysConfig::find()->one();
         if($action->id !== 'index' and $mSysConfig->process==1){
-            //throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-07.00น.) กรุณากลับเข้ามาใหม่หลังประมวลผลเสร็จแล้ว');
+            throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-07.00น.) กรุณากลับเข้ามาใหม่หลังประมวลผลเสร็จแล้ว');
         }
         return parent::beforeAction($action);
     }
@@ -162,6 +163,28 @@ class DefaultController extends Controller {
         $searchModel = new RptAnc12();      
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('anc12', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+     public function actionW2500() {
+         
+        $searchModel = new Rpt2500();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('w2500', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+    }
+    
+       public function actionAnc5() {
+         
+        $searchModel = new \frontend\modules\promote\models\RptAnc5();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('anc5', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
