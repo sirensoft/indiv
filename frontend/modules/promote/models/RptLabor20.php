@@ -13,7 +13,7 @@ class RptLabor20 extends Model {
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode','bmonth','a'], 'safe']
+            [['cup', 'name', 'hospcode','a'], 'safe']
         ];
     }
 
@@ -30,16 +30,19 @@ class RptLabor20 extends Model {
             $end_d = $byear.'0930';
             
 
-            $sql = " SELECT hs.amp_name cup,l.HOSPCODE hospcode 
-                ,hs.hosname,l.PID pid,p.`NAME` 'name',l.age_y age,l.GRAVIDA g ,DATE_FORMAT(l.bdate,'%m') bmonth
-,IF(l.GRAVIDA>1,'Y',NULL) a
-FROM	t_labor l 
-INNER JOIN chospital h ON l.hospcode=h.hoscode AND hostype in(5,6,7,11)
-INNER JOIN person p ON l.hospcode=p.hospcode AND l.pid=p.pid 
+            $sql = " SELECT h.amp_name cup,p.HOSPCODE hospcode,hh.hosname, p.PID pid,p.`NAME` 'name',p.age_y age
+,l.bdate,h.hoscode bhosp,l.GRAVIDA g
+,IF(l.gravida >1, 'Y',NULL ) a
 
-LEFT JOIN chospital_amp hs ON hs.hoscode = l.HOSPCODE
+FROM	t_labor l 
+INNER JOIN chospital_amp h ON l.bhosp=h.hoscode 
+
+INNER JOIN t_person_cid p ON l.cid=p.cid 
+LEFT JOIN chospital_amp hh on hh.hoscode = p.HOSPCODE
+
 WHERE TIMESTAMPDIFF(YEAR,p.birth,BDATE) < 20 AND l.BDATE BETWEEN $start_d AND $end_d
-AND p.nation in(99)  and hs.amp_name ='$cup' ";
+AND p.nation in(99) AND hh.amp_name = '$cup'
+GROUP BY l.cid,l.bdate ";
         }
 
         $models = \Yii::$app->db->createCommand($sql)->queryAll();
@@ -54,7 +57,7 @@ AND p.nation in(99)  and hs.amp_name ='$cup' ";
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
             $query->andFilterWhere(['a' => $this->a]);
             
-            $query->andFilterWhere(['bmonth'=>$this->bmonth]);
+           
             
         }
         $all_models = $query->all();

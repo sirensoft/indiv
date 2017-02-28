@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'ร้อยละการตั้งครรภ์ซ้ำในหญิงอายุน้อยกว่า 20 ปี (PA) ';
+$this->title = 'ร้อยละการตั้งครรภ์ซ้ำในหญิงอายุน้อยกว่า 20 ปี  ';
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -64,7 +64,8 @@ echo GridView::widget([
         'name:text:ชื่อแม่',        
         'age:integer:อายุ',
         'g:integer:ครรภ์ที่',
-        'bmonth:text:คลอดเดือน',
+        'bdate:date:คลอด',
+        'bhosp:text:ที่',
         
       
         'a:text:A'
