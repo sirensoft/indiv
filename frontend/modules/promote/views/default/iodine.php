@@ -16,6 +16,11 @@ use yii\helpers\Url;
 $this->title = 'ร้อยละของหญิงตั้งครรภ์ได้รับยาเม็ดเสริมไอโอดีน';
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
+?>
+<div> รหัสยา=201120320037726221781506 ,201110100019999920381199
+    ,101110000003082121781506,201110100019999920381341,201110100019999921881341
+    </div>
+<?php
 
 
 $sql = " SELECT DISTINCT t.amp_name id,t.amp_name val FROM chospital_amp t ";
@@ -52,8 +57,8 @@ echo GridView::widget([
     'filterModel' => $searchModel,
     'panel'=>[
         'before'=>'<a href="https://goo.gl/EYOQOO" target="_blank">[ดูผลรวม-คลิก]</a>',
-        'heading'=>'รายชื่อหญิงตั้งครรภ์ได้รับยาเม็ดเสริมไอโอดีน'
-    ],
+        'heading'=>'รายชื่อหญิงตั้งครรภ์ได้รับยาเม็ดเสริมไอโอดีน',
+     ],
     'columns' => [      
         [
             'attribute' =>'hospcode',
