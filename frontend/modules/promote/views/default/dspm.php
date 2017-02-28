@@ -93,6 +93,9 @@ echo GridView::widget([
            'attribute'=>'sex',
            'label'=>'เพศ',
            'value'=>function($model){
+                if(!isset($model['sex'])){
+                    return null;
+                }
                 $sex = 'ญ';
                 if($model['sex']==1)$sex='ช';
                 return $sex;
