@@ -30,7 +30,8 @@ class RptAnc5 extends Model {
             $end_d = $byear.'0930';
             
 
-            $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname,p.PID pid,p.`NAME` 'name'
+            $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname,p.PID pid
+                ,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name'
 ,l.BDATE bdate,l.BHOSP bhosp,l.GRAVIDA g,l.LMP lmp
 ,a.g1_date ,a.g2_date,a.g3_date,a.g4_date,a.g5_date
 ,MAX(IF(a.g1_ga <=12 AND a.g2_ga IN(16,17,18,19,20) AND a.g3_ga IN(24,25,26,27,28) 

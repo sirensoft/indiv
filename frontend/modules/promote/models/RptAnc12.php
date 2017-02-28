@@ -31,7 +31,7 @@ class RptAnc12 extends Model {
             
 
             $sql = " SELECT h.amp_name cup,p.check_hosp hospcode ,h.hosname
-,p.PID pid,p.`NAME` 'name',a.bdate,a.bhosp,a.g1_ga ga
+,p.PID pid,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',a.bdate,a.bhosp,a.g1_ga ga
 ,l.LMP lmp,a.g1_date
 ,IF( a.g1_ga <=12,'Y',NULL) a
 FROM	t_labor l 

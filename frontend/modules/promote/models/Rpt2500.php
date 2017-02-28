@@ -31,7 +31,7 @@ class Rpt2500 extends Model {
             
 
             $sql = " SELECT h.amp_name cup,p.check_hosp hospcode ,h.hosname
-,p.PID pid,p.`NAME` 'name'
+,p.PID pid,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name'
 ,p.BIRTH bdate,e.bweight
 ,IF(e.bweight >0 AND e.bweight < 2500,'Y',null) as a
 

@@ -30,7 +30,8 @@ class RptLabor20 extends Model {
             $end_d = $byear.'0930';
             
 
-            $sql = " SELECT h.amp_name cup,p.HOSPCODE hospcode,hh.hosname, p.PID pid,p.`NAME` 'name',p.age_y age
+            $sql = " SELECT h.amp_name cup,p.HOSPCODE hospcode,hh.hosname, p.PID pid,
+                concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',p.age_y age
 ,l.bdate,h.hoscode bhosp,l.GRAVIDA g
 ,IF(l.gravida >1, 'Y',NULL ) a
 

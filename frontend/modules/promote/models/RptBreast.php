@@ -31,7 +31,7 @@ class RptBreast extends Model {
             $end_d = $byear.'0930';
 
             $sql = " SELECT h.amp_name cup,
-p.check_hosp hospcode,h.hosname,p.PID pid,p.`NAME` 'name',p.age_y age
+p.check_hosp hospcode,h.hosname,p.PID pid,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',p.age_y age
 ,MAX(IF(o.doctor_screen_date BETWEEN $start_d AND $end_d ,o.doctor_screen_date,NULL)) 'screen_date'
 ,o.doctor_screen 'doctor',o.self_screen 'self'
 ,MAX(IF(o.doctor_screen_date BETWEEN $start_d AND $end_d OR o.self_screen_date BETWEEN $start_d AND $end_d ,'Y',NULL)) a

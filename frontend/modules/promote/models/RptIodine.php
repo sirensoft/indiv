@@ -31,7 +31,7 @@ class RptIodine extends Model {
             
 
             $sql = " 
-SELECT h.amp_name cup,tb1.HOSPCODE hospcode,h.hosname ,tb1.acid,tb1.`NAME` 'name',tb1.LNAME 'lname',tb1.PID 'pid'
+SELECT h.amp_name cup,tb1.HOSPCODE hospcode,h.hosname ,tb1.acid,concat(tb1.`NAME` ,' ',left(tb1.lname,3),'*') 'name',tb1.LNAME 'lname',tb1.PID 'pid'
 ,tb1.m,if(tb1.a=1,tb1.dDATE_SERV,NULL) 'date_serv'
 ,if(tb1.a=1,'Y',NULL) a
 FROM (

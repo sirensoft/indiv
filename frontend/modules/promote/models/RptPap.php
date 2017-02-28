@@ -30,7 +30,8 @@ class RptPap extends Model {
             $end_d = $byear.'0930';
             
 
-            $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname ,p.PID pid ,pc.`NAME` 'name',p.age_y age
+            $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname ,p.PID pid 
+                ,concat(pc.`NAME` ,' ',left(pc.lname,3),'*') 'name',p.age_y age
 ,o.screen_date,o.screen_code,MAX(IF(o.cid is not null ,'Y',NULL)) a
 FROM	t_person_cid p 
 LEFT JOIN t_cervix_screen o ON o.CID=p.CID	

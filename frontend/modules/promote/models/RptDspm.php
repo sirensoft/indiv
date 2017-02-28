@@ -30,7 +30,7 @@ class RptDspm extends Model {
             $end_d = $byear.'0930';
 
             $sql = " SELECT h.amp_name cup ,t.hospcode ,h.hosname 
-,t.pid ,p.`NAME` 'name',t.sex ,t.birth 
+,t.pid ,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',t.sex ,t.birth 
 ,TIMESTAMPDIFF(MONTH,t.birth,CURDATE()) c_age ,t.date_start,t.date_end
 ,t.agemonth age_m ,t.date_serv_first,t.sp_first ,t.date_serv_last,t.sp_last,
 if(TIMESTAMPDIFF(MONTH,t.birth,CURDATE())>=t.agemonth AND t.date_serv_first IS NULL,'yes',NULL) 'color'

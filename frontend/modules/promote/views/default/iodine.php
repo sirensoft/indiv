@@ -67,7 +67,7 @@ echo GridView::widget([
         'hosname',
         'pid',
         'name:text:ชื่อ',
-        'lname:text:นามสกุล',  
+        //'lname:text:นามสกุล',  
         //'age:integer:อายุ',
         'date_serv:date:ได้รับ',        
        

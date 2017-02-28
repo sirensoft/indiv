@@ -31,7 +31,8 @@ class RptAging extends Model {
             
 
             $sql = " SELECT
-h.amp_name cup,p.check_hosp hospcode,h.hosname,p.PID pid ,p.`NAME` 'name',p.SEX sex,p.age_y age,RIGHT(p.vhid,2) moo
+h.amp_name cup,p.check_hosp hospcode,h.hosname,p.PID pid ,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name'
+,p.SEX sex,p.age_y age,RIGHT(p.vhid,2) moo
 
 ,t.adl_date,t.adl_code
 ,t.ht_date,t.ht_risk
