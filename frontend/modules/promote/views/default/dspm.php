@@ -89,8 +89,16 @@ echo GridView::widget([
             'width'=>'80px',
             'noWrap'=>true
         ],
-       
-        'sex:text:เพศ',
+       [
+           'attribute'=>'sex',
+           'label'=>'เพศ',
+           'value'=>function($model){
+                $sex = 'ญ';
+                if($model['sex']==1)$sex='ช';
+                return $sex;
+           }
+       ],
+        //'sex:text:เพศ',
         'birth:date:เกิด',
         [
             'attribute'=>'c_age',
