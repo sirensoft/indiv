@@ -63,7 +63,7 @@ echo GridView::widget([
         [
             'columns'=>[
                 ['content'=>'หน่วยบริการ', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
-                ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>6, 'class'=>'text-center warning']],
+                ['content'=>'กลุ่มเป้าหมาย', 'options'=>['colspan'=>7, 'class'=>'text-center warning']],
                 
                 ['content'=>'คัดกรองครั้งที่1', 'options'=>['colspan'=>2, 'class'=>'text-center warning']], 
                 ['content'=>'คัดกรองครั้งที่2', 'options'=>['colspan'=>2, 'class'=>'text-center warning']],
@@ -94,19 +94,20 @@ echo GridView::widget([
         'birth:date:เกิด',
         [
             'attribute'=>'c_age',
-            'label'=>'อายุปัจจุบัน(ด)',
+            'label'=>'ปัจจุบัน(ด)',
             'mergeHeader'=>true,
             'vAlign'=>'middle',
             
         ],
-       
-        
+          
         [
             'attribute'=>'age_m',
             'format'=>'integer',
             'label'=>'กลุ่ม(ด)',
             'filter'=>['9'=>'9ด','18'=>'18ด','30'=>'30ด','42'=>'42ด']
         ],
+        'date_start:date:วันอายุแตะ',     
+        
         //'age_m:integer:อายุ(ด)',
         'date_serv_first:date:วันที่',
         'sp_first:text:รหัส',
