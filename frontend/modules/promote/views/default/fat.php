@@ -13,7 +13,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
-$this->title = 'ความชุกของภาวะอ้วน(BMI ≥ 25 กก/ม2 และหรือภาวะอ้วนลงพุง (รอบเอวเกิน ชาย 90 ซม. หญิง 80 ซม.) ';
+$this->title = 'ความชุกของภาวะอ้วน(BMI ≥ 25 กก/ม2) และหรือภาวะอ้วนลงพุง (รอบเอวเกิน ชาย 90 ซม. หญิง 80 ซม.)';
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
