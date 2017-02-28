@@ -182,10 +182,20 @@ class DefaultController extends Controller {
     }
     
        public function actionAnc5() {
-         
-        $searchModel = new \frontend\modules\promote\models\RptAnc5();      
+
+        $searchModel = new \frontend\modules\promote\models\RptAnc5();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
         return $this->render('anc5', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+        public function actionMomCare() {
+         
+        $searchModel = new \frontend\modules\promote\models\RptMomCare();      
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
+        return $this->render('mom-care', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
                     
