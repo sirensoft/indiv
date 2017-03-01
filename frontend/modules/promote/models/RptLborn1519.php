@@ -31,7 +31,7 @@ class RptLborn1519 extends Model {
             
 
             $sql = " SELECT h.amp_name cup,p.check_hosp hospcode,h.hosname
-                ,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name'	
+                ,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',p.pid	
                 ,p.age_y age,l.m bmonth ,l.LBORN lborn ,if(l.LBORN>=1,'Y',NULL) a FROM
 t_person_cid p 
 LEFT JOIN (
