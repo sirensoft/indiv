@@ -28,7 +28,7 @@ class RptHct extends Model {
             $start_d = $pyear . '1001';
             $end_d = $byear . '0930';
 
-            $sql = " SELECT h.amp_name cup,a.HOSPCODE hospcode,h.hosname,a.pid
+            $sql = " SELECT h.amp_name cup,pc.HOSPCODE hospcode,h.hosname,pc.pid
                 ,concat(pc.`NAME` ,' ',left(pc.lname,3),'*') 'name',pc.age_y age
                 ,p.DATE_HCT date_hct,p.HCT_RESULT hct_result
 ,MAX(if(p.hct_result>0 ,'Y',NULL)) as b

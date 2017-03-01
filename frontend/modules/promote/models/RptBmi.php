@@ -31,7 +31,7 @@ class RptBmi extends Model {
             
 
             $sql = " SELECT
-h.amp_name cup,h.hoscode hospcode,h.hosname,t.PID pid,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',p.SEX sex
+h.amp_name cup,h.hoscode hospcode,h.hosname,p.PID pid,concat(p.`NAME` ,' ',left(p.lname,3),'*') 'name',p.SEX sex
 ,TIMESTAMPDIFF(YEAR,p.BIRTH,t.DATE_SERV) age
 ,t.DATE_SERV date_screen,t.QUARTERM q,t.bmi
 ,if(t.QUARTERM in(1,1,2,3,4) AND t.bmi BETWEEN 18.5 AND 22.9 ,'Y',NULL) a
