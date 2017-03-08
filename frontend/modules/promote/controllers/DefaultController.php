@@ -31,7 +31,7 @@ class DefaultController extends Controller {
     {
         $mSysConfig = SysConfig::find()->one();
         if($action->id !== 'index' and $mSysConfig->process==1){
-            if(\Yii::$app->request->getUserIP()<>'1.10.214.89')
+            if(\Yii::$app->request->getUserIP()<>'1.10.214.152')
             throw  new \yii\web\ForbiddenHttpException('ระบบกำลังประมวลผล (21.00น.-07.00น.) กรุณากลับเข้ามาใหม่หลังประมวลผลเสร็จแล้ว');
         }
         return parent::beforeAction($action);

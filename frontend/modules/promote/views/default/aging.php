@@ -90,6 +90,7 @@ echo GridView::widget([
         'adl_date:date:วันที่',
         [
             'attribute'=>'adl_code',
+            'filter'=>['1B1280'=>'ติดสังคม','1B1281'=>'ติดบ้าน','1B1282'=>'ติดเตียง'],
             'label'=>'ผล',
             'value'=>function($model){
                 if(!isset($model['adl_code'])){

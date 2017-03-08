@@ -11,6 +11,9 @@ use yii\helpers\Url;
         <li>
             <h4><?= Html::a('กลุ่มงานส่งเสริม', ['/promote/default/index']) ?></h4>
         </li>
+        <li>
+            <h4><?= Html::a('กลุ่มงานทันตะ', ['/dent/default/index']) ?></h4>
+        </li>
      </ul>
 </div>
 

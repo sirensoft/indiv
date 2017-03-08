@@ -8,12 +8,12 @@ use yii\data\ArrayDataProvider;
 
 class RptAging extends Model {
 
-    public $cup, $name, $hospcode,$moo;
+    public $cup, $name, $hospcode,$moo,$adl_code;
    
 
     public function rules() {
         return [
-            [['cup', 'name', 'hospcode','moo'], 'safe']
+            [['cup', 'name', 'hospcode','moo','adl_code'], 'safe']
         ];
     }
 
@@ -71,6 +71,8 @@ AND h.amp_name = '$cup' ";
             $query->andFilterWhere(['like', 'name', $this->name]);
             $query->andFilterWhere(['hospcode' => $this->hospcode]);
             $query->andFilterWhere(['moo'=> $this->moo]);
+            $query->andFilterWhere(['adl_code'=> $this->adl_code]);
+            
            
             
         }
