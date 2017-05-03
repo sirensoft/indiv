@@ -17,7 +17,6 @@ $this->title = 'การคัดกรองผู้สูงอายุ 10 
 $this->params['breadcrumbs'][] = ['label'=>'รายงานกลุ่มงานส่งเสริม','url'=>['/promote/default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-
 $sql = " SELECT DISTINCT t.amp_name id,t.amp_name val FROM chospital_amp t ";
 
 $items = MyHelper::dropDownItems($sql, 'id', 'val');
